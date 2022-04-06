@@ -49,8 +49,6 @@ require('packer').startup(function(use)
     config = function() require('Comment').setup() end,
   }
 
-  use 'ludovicchabant/vim-gutentags' -- Automatic tags management
-
   use { -- UI to select things (files, grep results, open buffers...)
     { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } },
     { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
@@ -284,6 +282,11 @@ vim.o.smartcase = true
 vim.o.updatetime = 250
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
+-- Set default indentation to 2 spaces
+vim.o.expandtab = true
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
 
 --Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
