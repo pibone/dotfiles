@@ -18,6 +18,7 @@ export HISTSIZE=10000
 
 
 path+=/usr/local/sbin
+path+=/usr/local/bin
 path+=$FZF_DATA/bin
 path+=$HOME/.local/bin
 path+=$HOME/bin
