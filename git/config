@@ -7,9 +7,8 @@
   # Command shortcuts
   ci = commit
   co = checkout
-  st = status
-  # Display tree-like log, because default log is a pain…
-  lg = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
+  st = status --short
+  lg = log --graph --topo-order --date=relative --pretty='format:%Cgreen%h%Creset %s%Cred%d%Creset'
   # Useful when you have to update your last commit
   # with staged files without editing the commit message.
   oops = commit --amend --no-edit
@@ -20,16 +19,20 @@
   reword = commit --amend
   # Undo last commit but keep changed files in stage
   undo-commit = reset --soft HEAD~1
+  # Unstage a file
+  unstage = reset -- 
   # Remove file(s) from Git but not from disk
   untrack = rm --cache --
 [core]
   # Don't paginate output by default
-  pager = cat
+  pager = bat --paging=always
   # Global ignore file (not shared)
   excludesfile = ~/.config/git/ignore
   whitespace = -trailing-space
 [include]
   path = ~/.gitconfig.local
+[gui]
+  diffopts = --word-diff --color-words
 [diff]
   mnemonicPrefix = true
   renames = true
@@ -38,6 +41,7 @@
   colorMoved = zebra
 [fetch]
   recurseSubmodules = on-demand
+  prune = true
 [grep]
   break = true
   heading = true
@@ -48,8 +52,9 @@
   follow = true
   decorate = false
 [merge]
-  ff = false
-  commit = false
+  ff = only
+[rerere]
+  enabled = true
 [mergetool]
   # Clean up backup files created by merge tools on tool exit
   keepBackup = false
@@ -66,16 +71,9 @@
   default = upstream
   # When pushing, also push tags whose commit-ishs are now reachable upstream
   followTags = true
-# [rebase]
-  # Rebase advanced usage.
-  # Automagically reorder and prefix your commands while doing an interactive
-  # rebase. This has to be used with `--fixup` and/or `--squash` options for
-  # `git commit`.
-  # autoSquash = true
-  # Automatically stash current WD and stage when running rebase
-  # then you won't have to manually `git stash push` and `git stash pop`
-  # after and before your rebase.
-  # autoStash = true
+[rebase]
+  autoSquash = true
+  autoStash = true
 [status]
   # Display submodule rev change summaries in status
   submoduleSummary = true

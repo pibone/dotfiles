@@ -22,20 +22,15 @@ path+=/usr/local/bin
 path+=$FZF_DATA/bin
 path+=$HOME/.local/bin
 path+=$HOME/bin
+path+=$HOME/.cargo/bin
 export PATH=$PATH
 
 
 export KUBE_EDITOR=nvim
 export EDITOR=nvim
-alias vi=nvim
-alias vim=nvim
-alias nano=micro
-alias pico=micro
-alias ls=exa
-alias cat=bat
-alias g=git
 
 fpath+=~/.zfunc
+fpath+=$XDG_CONFIG_HOME/zsh/zfunc
 
 # Autoload completion extensions
 autoload -U compinit -d $ZSH_COMPDUMP && compinit -d $ZSH_COMPDUMP
@@ -44,17 +39,17 @@ autoload -U +X bashcompinit && bashcompinit
 # ZSH plugins
 plugins=(... docker)
 
-if command -v pass &> /dev/null; then
-  PASS_STORE=$HOME/.work-password-store
-  STORE_REPO_URL=git@github.com:PepperES/secrets-store.git
-  alias workpass="PASSWORD_STORE_DIR=$PASS_STORE pass"
-  if [[ ! -d $PASS_STORE ]]; then
-    echo "Cloning the workpass secret store"
-    git clone $STORE_REPO_URL $PASS_STORE
-  else
-    (set +m; git -C ${PASS_STORE} pull&) > /dev/null
-  fi
-fi
+# if command -v pass &> /dev/null; then
+#   PASS_STORE=$HOME/.work-password-store
+#   STORE_REPO_URL=git@github.com:PepperES/secrets-store.git
+#   alias workpass="PASSWORD_STORE_DIR=$PASS_STORE pass"
+#   if [[ ! -d $PASS_STORE ]]; then
+#     echo "Cloning the workpass secret store"
+#     git clone $STORE_REPO_URL $PASS_STORE
+#   else
+#     (set +m; git -C ${PASS_STORE} pull&) > /dev/null
+#   fi
+# fi
 
 PREZTO_DATA="$DATA_HOME/zprezto"
 if [[ ! -d $PREZTO_DATA ]]; then
@@ -77,6 +72,17 @@ source <(kubectl completion zsh)
 source <(flux completion zsh) && compdef _flux flux
 ## aws
 complete -C '/usr/local/bin/aws_completer' aws
+
+export LS_COLORS="$(vivid generate molokai)"
+
+alias vi=nvim
+alias vim=nvim
+alias nano=micro
+alias pico=micro
+alias ls=exa
+alias cat=bat
+alias g=git
+alias k=kubectl
 
 
 [ -f $HOME/.zshrc ] && source $HOME/.zshrc

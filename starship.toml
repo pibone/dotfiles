@@ -1,0 +1,16 @@
+[kubernetes]
+style = 'cyan'
+format = '[\[🐳 $cluster(@$namespace)\]]($style) '
+disabled = false
+
+[aws]
+disabled = true
+
+[git_branch]
+format = '[\[$symbol$branch\]]($style) '
+
+[directory]
+style = 'bold green'
+repo_root_style = 'bold yellow'
+format = '[\[$path[$read_only]($read_only_style)\]]($style) '
+repo_root_format = '[\[$before_root_path]($style)[$repo_root]($repo_root_style)[$path[$read_only]($read_only_style)\]]($style) '
