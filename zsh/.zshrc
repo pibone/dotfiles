@@ -23,6 +23,8 @@ path+=$FZF_DATA/bin
 path+=$HOME/.local/bin
 path+=$HOME/bin
 path+=$HOME/.cargo/bin
+path+=/opt/homebrew/bin
+path+=/opt/homebrew/sbin
 export PATH=$PATH
 
 

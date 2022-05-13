@@ -69,8 +69,9 @@ brew_install() {
   CASK="keka krita inkscape gimp iterm2 staruml slack \
       telegram-desktop sequel-pro visual-studio-code  \
       google-chrome firefox alfred secure-pipes       \
-      font-fira-code-nerd-font font-fira-mono-nerd-font\
       macdown authy vimr rancher lens"
+
+      # font-fira-code-nerd-font font-fira-mono-nerd-font\
 
   brew install $TERMINAL $DEVOPS $CONTAINER $K8S $COMPAT $DEV_LANGS $CASK
 }
